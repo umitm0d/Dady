@@ -28,6 +28,10 @@ def get_self_url():
     path = request.path
     return f"{scheme}://{host}{path}"
 
+@app.route("/health", methods=["GET"])
+def health():
+    return Response("OK", status=200, content_type="text/plain")
+
 @app.route("/", methods=["GET"])
 def index():
     cdn = request.args.get("CDN")
